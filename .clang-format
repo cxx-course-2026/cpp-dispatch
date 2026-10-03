@@ -1,0 +1,7 @@
+# Стиль кода курса: Google с отступом 4 и строкой до 110 символов.
+BasedOnStyle: Google
+IndentWidth: 4
+AccessModifierOffset: -4
+ColumnLimit: 110
+DerivePointerAlignment: false
+PointerAlignment: Left

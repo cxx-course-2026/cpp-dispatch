@@ -1,0 +1,14 @@
+# Проверки clang-tidy курса: вероятные ошибки, производительность, современный C++, скобки.
+# Любое замечание — ошибка.
+Checks: >
+  -*,
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-narrowing-conversions,
+  -bugprone-exception-escape,
+  performance-*,
+  modernize-use-nullptr,
+  modernize-use-override,
+  readability-braces-around-statements
+WarningsAsErrors: '*'
+HeaderFilterRegex: '.*'

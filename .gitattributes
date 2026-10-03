@@ -1,0 +1,6 @@
+# Переводы строк — всегда LF, даже если git в Windows настроен на CRLF:
+# иначе tests/run.sh и ожидаемые ответы тестов ломаются в Git Bash и WSL.
+* text=auto eol=lf
+*.png binary
+# Данные проверок — байт в байт: BOM и переводы строк Windows в них нарочно.
+checks/*/data/** -text

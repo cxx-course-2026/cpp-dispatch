@@ -1,0 +1,11 @@
+build/
+build-check/
+cmake-build-*/
+out/
+.vs/
+.idea/
+.vscode/
+.DS_Store
+*.user
+CMakeUserPresets.json
+build-release/

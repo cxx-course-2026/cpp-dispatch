@@ -1,0 +1,51 @@
+# Проверки проекта «Диспетчер» — те же, что `make check`.
+name: Проверки
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+  statuses: write
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  checks:
+    # в самом шаблоне проверки не гоняем: кода в нём нет
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Получение кода
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Настройка для санитайзеров
+        run: sudo sysctl -w vm.mmap_rnd_bits=28 || true
+      - name: Инструменты (Qt 6, clang-format, clang-tidy, Doxygen — по мере надобности)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ninja-build qt6-base-dev libgl-dev clang-format clang-tidy doxygen >/dev/null
+      - name: Статус «проверяется» для сайта курса
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA"
+          -f state=pending -f context=autograding -f description="Проверки запущены" >/dev/null
+      - name: Проверки тикетов
+        id: tests
+        run: bash checks/run.sh --report
+      - name: Баллы для сайта курса
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EARNED: ${{ steps.tests.outputs.earned }}
+          MAX: ${{ steps.tests.outputs.max }}
+        run: |
+          if [ -z "$EARNED" ]; then state=error; text="Проверки не запустились"
+          elif [ "$EARNED" = "$MAX" ]; then state=success; text="$EARNED из $MAX баллов"
+          else state=failure; text="$EARNED из $MAX баллов"; fi
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" \
+            -f state="$state" -f context=autograding -f description="$text" >/dev/null
