@@ -46,15 +46,15 @@ make update           # новые тикеты, письма и проверк�
 |---|---|---|
 | [DSP-1](tickets/01-tz-and-skeleton.md) | 1 | черновик ТЗ по письму заказчика, каркас CMake, `dispatch --version` |
 | [DSP-2](tickets/02-tz-v2-count.md) | 2 | ТЗ версии 2 по ответам заказчика: этапы, приёмка, документация; формат файла заявок, `dispatch count` |
-| [DSP-3](tickets/03-request-show.md) | 3 | `struct Request`, разбор строки с проверкой всех полей, `ParseError`, `dispatch show` |
-| [DSP-4](tickets/04-report-find.md) | 4 | `dispatch report` — таблица с выравниванием по символам UTF-8, `dispatch find` без учёта регистра |
-| [DSP-5](tickets/05-library-tests.md) | 5 | библиотека `dispatch_core` с заголовками `include/dispatch/`, свои модульные тесты |
-| [DSP-6](tickets/06-release-0.1.md) | 6 | релиз 0.1: `dispatch check`, CHANGELOG, руководство оператора, сборка Release, тег `v0.1.0` |
-| [DSP-7](tickets/07-registry.md) | 7 | класс `Registry`: переходы состояний, атомарное сохранение; `assign`, `done`, `close`, `cancel` |
-| [DSP-8](tickets/08-policies-queue.md) | 8 | мастера, правила назначения — иерархия классов, очередь по срочности; `suggest`, `queue` |
-| [DSP-9](tickets/09-sla-stats.md) | 9 | сроки по правилам инспекции на `std::chrono`, `dispatch stats`, 500 000 заявок за 3 секунды |
-| [DSP-10](tickets/10-main-window.md) | 10 | окно `dispatch-gui` на Qt: таблица заявок в порядке очереди, подсветка аварийных, итог |
-| [DSP-11](tickets/11-new-request.md) | 11 | форма новой заявки в Qt Designer, `Registry::add`, добавление из окна с сохранением |
-| [DSP-12](tickets/12-model-filter-chart.md) | 12 | `RequestModel` и фильтр `QSortFilterProxyModel`, открытие из меню, график по дням на `QPainter` |
-| [DSP-13](tickets/13-style-docs-import.md) | 13 | clang-format и clang-tidy, Doxygen, описание по ГОСТ 19.402, импорт выгрузки на Python |
-| [DSP-14](tickets/14-release-1.0.md) | 14 | выпуск 1.0.0, протокол приёмки по ТЗ, отчёт, презентация, защита |
+| DSP-3 | 3 | `struct Request`, разбор строки с проверкой всех полей, `ParseError`, `dispatch show` |
+| DSP-4 | 4 | `dispatch report` — таблица с выравниванием по символам UTF-8, `dispatch find` без учёта регистра |
+| DSP-5 | 5 | библиотека `dispatch_core` с заголовками `include/dispatch/`, свои модульные тесты |
+| DSP-6 | 6 | релиз 0.1: `dispatch check`, CHANGELOG, руководство оператора, сборка Release, тег `v0.1.0` |
+| DSP-7 | 7 | класс `Registry`: переходы состояний, атомарное сохранение; `assign`, `done`, `close`, `cancel` |
+| DSP-8 | 8 | мастера, правила назначения — иерархия классов, очередь по срочности; `suggest`, `queue` |
+| DSP-9 | 9 | сроки по правилам инспекции на `std::chrono`, `dispatch stats`, 500 000 заявок за 3 секунды |
+| DSP-10 | 10 | окно `dispatch-gui` на Qt: таблица заявок в порядке очереди, подсветка аварийных, итог |
+| DSP-11 | 11 | форма новой заявки в Qt Designer, `Registry::add`, добавление из окна с сохранением |
+| DSP-12 | 12 | `RequestModel` и фильтр `QSortFilterProxyModel`, открытие из меню, график по дням на `QPainter` |
+| DSP-13 | 13 | clang-format и clang-tidy, Doxygen, описание по ГОСТ 19.402, импорт выгрузки на Python |
+| DSP-14 | 14 | выпуск 1.0.0, протокол приёмки по ТЗ, отчёт, презентация, защита |
